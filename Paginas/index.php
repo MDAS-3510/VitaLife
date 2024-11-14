@@ -56,7 +56,11 @@
       case 'home':
          include("home.php");
          break;
+   
 
+
+//==================================================//
+         //Contatos
       case 'contatos':
          include("./contatos/contatos.php");
          break;
@@ -72,14 +76,22 @@
       case 'excluir-contato':
          include("./contatos/excluir-contato.php");
          break;
+//==================================================//
 
+
+//==================================================//
       case 'tarefas':
          include("./tarefas/tarefas.php");
          break;
+//==================================================//
+      
 
+
+//==================================================//
       case 'eventos':
          include("./eventos/eventos.php");
          break;
+//==================================================//
 
       default:
       include("home.php");

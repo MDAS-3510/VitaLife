@@ -1,6 +1,6 @@
 <?php
 
-class Contato{
+class Tarefa{
 
    private $idTarefas;
    private $titulo;
