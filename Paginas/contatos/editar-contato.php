@@ -17,7 +17,7 @@
       $crm   = $_POST['crmContato'];
 
       $contato-> alterarContato($id, $nome, $email, $tel, $crm, $end);
-      header("location:contatos.php");
+      
 
    }
    ?>

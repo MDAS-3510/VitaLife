@@ -1,4 +1,5 @@
 <?php
+
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
    
-   <title>Sistemas Agendador 1.1</title>
+   <title>Sistemas Agendador 1.0</title>
 </head>
 <body>
    <div class="contaier">
@@ -57,27 +58,27 @@
          break;
 
       case 'contatos':
-         include("contatos.php");
+         include("./contatos/contatos.php");
          break;
          
       case 'cad-contato':
-         include("cad-contato.php");
+         include("./contatos/cad-contato.php");
          break;
 
       case 'editar-contato':
-         include("editar-contato.php");
+         include("./contatos/editar-contato.php");
          break;
 
       case 'excluir-contato':
-         include("excluir-contato.php");
+         include("./contatos/excluir-contato.php");
          break;
 
       case 'tarefas':
-         include("tarefas.php");
+         include("./tarefas/tarefas.php");
          break;
 
       case 'eventos':
-         include("eventos.php");
+         include("./eventos/eventos.php");
          break;
 
       default:

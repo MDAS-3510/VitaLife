@@ -69,3 +69,14 @@ CREATE TABLE Exame(
 )
 
 
+CREATE TABLE Tarefas (
+   idTarefas int primary key auto_increment,
+   titulo varchar(255),
+   descricao text,
+   dataConclusao date,
+   horaConclusao time,
+   dataLembrete date,
+   horaLembrete time,
+   recorrencia int,
+   verificacao tinyint
+)

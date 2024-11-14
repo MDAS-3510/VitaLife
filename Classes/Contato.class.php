@@ -21,7 +21,7 @@ class Contato{
 		}
    }
    public function inserirContato( $nomeContato, $emailContato,  $telefoneContato, $enderecoContato , $crmContato){
-      $sql = "INSERT INTO contatos SET  nomecontato= :n, emailcontato = :e,  telefonecontato = :t, enderecocontato = :n, crmcontato = :c";
+      $sql = "INSERT INTO contatos SET  nomecontato= :n, emailcontato = :e,  telefonecontato = :t, enderecocontato = :d, crmcontato = :c";
 		$sql = $this->pdo->prepare($sql);
 
 		$sql->bindValue(":n", $nomeContato);
@@ -77,7 +77,7 @@ class Contato{
    }
 
    public function alterarContato($id, $nome, $email, $telefone, $crm, $endereco){
-      $sql = "UPDATE contatos SET  emailcontato= :e, nomecontato = :n, telefonecontato = :t, enderecocontato = :n, crmcontato = :c WHERE idcontato = :i";
+      $sql = "UPDATE contatos SET  emailcontato= :e, nomecontato = :n, telefonecontato = :t, enderecocontato = :d, crmcontato = :c WHERE idcontato = :i";
 		$sql = $this->pdo->prepare($sql);
 
       $sql->bindValue(":i", $id);

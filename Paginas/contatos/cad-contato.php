@@ -1,16 +1,15 @@
 <header>
    <h3>Adicionar de contato</h3>
    <style>
-      
       label{
          display:block;
-         
       }
    </style>
 </header>
 
+
 <div>
-   <form method="post">
+   <form method="post" >
       
       <div>
          <label for="nomeContato">Nome</label>
@@ -61,3 +60,5 @@ if ( isset($_POST['nomeContato'] ) ){
 
 
 }
+
+

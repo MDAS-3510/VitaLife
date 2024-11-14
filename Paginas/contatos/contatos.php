@@ -20,19 +20,6 @@ $contato = new Contato();
 ?>
 
 <table border="1">
-<div class="container text-center">
-   <div class="row row-cols-4">
-      <div class="col">ID</div>
-      <div class="col">Nome</div>
-      <div class="col">Email</div>
-      <div class="col">Endereço</div>
-      <div class="col">CRM</div>
-      <div class="col">Editar</div>
-      <div class="col">Excluir</div>
-   </div>
-   </div>
-
-
    <thead>
       <tr>
          <th>ID</th>
@@ -77,3 +64,48 @@ $contato = new Contato();
 </table>
 <br>
 
+<?php
+// Exemplo de conexão usando PDO
+$pdo = new PDO("mysql:host=localhost;dbname=VitaLife", "root", "");
+
+// Define a consulta para obter o total de registros
+$sqlTotal = "SELECT COUNT(idContato) as total FROM contatos";
+$stmt = $pdo->query($sqlTotal);
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Número total de registros
+$numTotal = $result['total'];
+
+// Define o total de páginas
+$totalPagina = ceil($numTotal / $quantidade);
+
+// Exibe o total de registros
+echo "Total de registros: " . $numTotal . "";
+
+// Link para a primeira página
+echo '<a href="?menuop=contatos&pagina=1">Primeira Pagina</a>';
+
+// Exibe o link para a página anterior, se houver
+if($pagina > 6){
+   echo '<a href="?menuop=contatos&pagina=' . ($pagina - 1) . '"><<</a>';
+}
+
+// Gera a lista de links de paginação
+for($i = 1; $i <= $totalPagina; $i++){
+   if($i >= ($pagina - 5) && $i <= ($pagina + 5)){
+      if($i == $pagina){
+         echo "<span>$i</span>";
+      } else {
+         echo "<a href=\"?menuop=contatos&pagina={$i}\"> {$i} </a>";
+      }
+   }
+}
+
+// Exibe o link para a próxima página, se houver
+if($pagina < $totalPagina - 5){
+   echo '<a href="?menuop=contatos&pagina=' . ($pagina + 1) . '">>></a>';
+}
+
+// Link para a última página
+echo "<a href=\"?menuop=contatos&pagina=$totalPagina\">Ultima Pagina</a>";
+?>

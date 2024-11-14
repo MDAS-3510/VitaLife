@@ -58,11 +58,20 @@ header .menu-desktop nav ul li a{
    transform: scale(1.05);
 }
 
-header .btn-contato button, .hero-site button{
+header .btn-contato button{
    font-size: 15px;
    background-color: transparent;
    border: 1px solid #2198A9;
    color: #2198A9;
+   cursor: pointer;
+   transition: 0.5s;
+}
+
+.hero-site button{
+   font-size: 15px;
+   background-color: transparent;
+   border: 1px solid #ffffff;
+   color: #fffdfd;
    cursor: pointer;
    transition: 0.5s;
 }
