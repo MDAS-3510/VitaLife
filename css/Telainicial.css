@@ -65,6 +65,7 @@ header .btn-contato button{
    color: #2198A9;
    cursor: pointer;
    transition: 0.5s;
+   border-radius: 4px;
 }
 
 .hero-site button{
@@ -74,11 +75,12 @@ header .btn-contato button{
    color: #fffdfd;
    cursor: pointer;
    transition: 0.5s;
+   border-radius: 4px;
 }
 
 header .btn-contato button{
-   width: 140px;
-   height: 45px;
+   width: 100px;
+   height: 40px;
 }
 header .btn-contato button:hover, .hero-site button:hover{
    background-color: #2198A9;
@@ -151,4 +153,37 @@ section.hero-site{
 
 .itens-contairner .txt-itens h3 span{
    font-weight: 200;
+}
+
+section.contato{
+   background-color: #ffffff;
+}
+
+section.contato{
+   background-color: #ffffff;
+   padding: 50px 0;
+   color: #000000;
+}
+
+.txt-contato, .icons-contato{
+   display: inline-block;
+   width: 45%;
+   margin-right: -6px;
+   vertical-align: middle;
+}
+
+.contato .txt-contato h3{
+   font-size: 2.5em;
+   line-height: 50px;
+   font-weight: 300;
+   margin-bottom: 10px;
+}
+
+.contato .txt-contato span{
+   display: block;
+   font-weight: 400;
+}
+
+.contato .icons-contato a{
+   text-decoration: none;
 }

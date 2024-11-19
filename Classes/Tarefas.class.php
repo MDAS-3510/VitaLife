@@ -40,6 +40,25 @@ class Tarefa{
 		$sql->execute();
    }
 
+   public function alterarTarefa($idTarefas ,$titulo, $descricao, $dataConclusao, $horaConclusao, $dataLembrete, $horaLembrete, $recorrencia){
+      $sql = "UPDATE tarefas SET titulo= :t, descricao = :d,  dataConclusao = :dc, horaConclusao = :hc, dataLembrete  = :dl, horaLembrete = :hl, recorrencia = :r WHERE idTarefas = :i";
+      $sql = $this->pdo->prepare($sql);
+      
+		$sql->bindValue(":i", $idTarefas);
+		$sql->bindValue(":t", $titulo);
+		$sql->bindValue(":d", $descricao);
+		$sql->bindValue(":dc", $dataConclusao);
+		$sql->bindValue(":hc", $horaConclusao);
+		$sql->bindValue(":dl", $dataLembrete);
+		$sql->bindValue(":hl", $horaLembrete);
+		$sql->bindValue(":r", $recorrencia);
+
+      $sql->execute();
+      
+
+   }
+
+
    public function localizarTarefa($idTarefas){
    
       $sql = "SELECT * FROM tarefas WHERE idTarefas = :i";
@@ -83,41 +102,46 @@ class Tarefa{
 		$sql->execute();
    }
 
-   public function tabelaTarefas($txt_pesquisa, $inicio, $pagina, $quantidade){
-      // Consulta com parâmetros para evitar SQL Injection
-      $sql = "SELECT
-            idTarefa,
-            verificacao,
-            titulo,
-            descricao,
-            DATE_FORMAT(dataConclusao, '%d/%m/%Y') AS dataConclusao,
-            horaConclusao
-            FROM tarefas
-            WHERE
-            titulo LIKE '%{$txt_pesquisa}%' OR 
-            descricao LIKE '%{$txt_pesquisa}%' OR
-            DATE_FORMAT(dataConclusao, '%d/%m/%Y') LIKE '%{$txt_pesquisa}%'
-            ORDER BY verificacao, dataConclusaoTarefa 
-            LIMIT $inicio, $quantidade
-            ";
-      $sql = $this->pdo->prepare($sql);
-      
-      $sql->bindValue(':txt_pesquisa', $txt_pesquisa, PDO::PARAM_INT);
-      $sql->bindValue(':titulo', "%$txt_pesquisa%", PDO::PARAM_STR);
-      $sql->bindValue(':inicio', $inicio, PDO::PARAM_INT);
-      $sql->bindValue(':quantidade', $quantidade, PDO::PARAM_INT);
-      
-      $sql->execute();
+public function tabelaTarefas($txt_pesquisa, $inicio, $quantidade){
+   // Consulta SQL para evitar SQL Injection
+   $sql = "SELECT
+               idTarefas,
+               verificacao,
+               titulo,
+               descricao,
+               DATE_FORMAT(dataConclusao, '%d/%m/%Y') AS dataConclusao,
+               horaConclusao
+         FROM tarefas
+         WHERE
+               titulo = :titulo
+               OR descricao LIKE :descricao
+               OR DATE_FORMAT(dataConclusao, '%d/%m/%Y') LIKE :data_pesquisa
+         ORDER BY verificacao, dataConclusao
+         LIMIT :inicio, :quantidade";
 
-      if( $sql->rowCount() > 0){
-         $dados = $sql->fetchAll();
-      }else{
-         $dados = array();
-      }
+   $sql = $this->pdo->prepare($sql);
 
-      return $dados;
+   // Atribuição de valores aos parâmetros com curinga para busca parcial
+   $sql->bindValue(':titulo', $txt_pesquisa, PDO::PARAM_STR);
+   $sql->bindValue(':descricao', "%$txt_pesquisa%", PDO::PARAM_STR);
+   $sql->bindValue(':data_pesquisa', "%$txt_pesquisa%", PDO::PARAM_STR);
 
+   // Parâmetros de paginação
+   $sql->bindValue(':inicio', (int) $inicio, PDO::PARAM_INT);
+   $sql->bindValue(':quantidade', (int) $quantidade, PDO::PARAM_INT);
+
+   // Executa a consulta
+   $sql->execute();
+
+   // Retorna os dados ou array vazio caso não haja resultados
+   if ($sql->rowCount() > 0) {
+      $dados = $sql->fetchAll(PDO::FETCH_ASSOC);
+   } else {
+      $dados = array();
    }
+
+   return $dados;
+}
 }
 
 ?>

@@ -4,39 +4,39 @@
    </h3>
 </header>
 <div>
-   <form class="needs-validation" method="post" novalidate>
+   <form class="needs-validation" method="post">
       <div class="mb-3">
             <label for="tituloTarefa" class="form-label">Título</label>
-            <input class="form-control" type="text" name="tituloTarefa" id="tituloTarefa" required>
+            <input class="form-control" type="text" name="titulo" id="tituloTarefa" required>
       </div>
       <div class="mb-3">
             <label for="descricaoTarefa" class="form-label">Descrição</label>
-            <textarea name="descricaoTarefa" id="descricaoTarefa" cols="30" rows="5" class="form-control" required></textarea>
+            <textarea name="descricao" id="descricaoTarefa" cols="30" rows="5" class="form-control" required></textarea>
       </div>
       <div class="row">
             <div class="mb-3 col-3">
                <label for="dataConclusaoTarefa" class="form-label">Data de Conclusão</label>
-               <input class="form-control" type="date" name="dataConclusaoTarefa" id="dataConclusaoTarefa" required>
+               <input class="form-control" type="date" name="dataConclusao" id="dataConclusaoTarefa" required>
             </div>
             <div class="mb-3 col-3">
                <label for="horaConclusaoTarefa" class="form-label">Hora de Conclusão</label>
-               <input class="form-control" type="time" name="horaConclusaoTarefa" id="horaConclusaoTarefa" required>
+               <input class="form-control" type="time" name="horaConclusao" id="horaConclusaoTarefa" required>
             </div>
       </div>
       <div class="row">
             <div class="mb-3 col-3">
                <label for="dataLembreteTarefa" class="form-label">Data de Lembrete</label>
-               <input class="form-control" type="date" name="dataLembreteTarefa" id="dataLembreteTarefa">
+               <input class="form-control" type="date" name="dataLembrete" id="dataLembreteTarefa">
             </div>
             <div class="mb-3 col-3">
                <label for="horaLembreteTarefa" class="form-label">Hora de Lembrete</label>
-               <input class="form-control" type="time" name="horaLembreteTarefa" id="horaLembreteTarefa">
+               <input class="form-control" type="time" name="horaLembrete" id="horaLembreteTarefa">
             </div>
       </div>
       <div class="row">
             <div class="mb-3 col-3">
                <label for="recorrenciaTarefa" class="form-label">Recorrência</label>
-               <select name="recorrenciaTarefa" id="recorrenciaTarefa" class="form-select">
+               <select name="recorrencia" id="recorrenciaTarefa" class="form-select">
                   <option value="0">Não Recorrente</option>
                   <option value="1">Diariamente</option>
                   <option value="2">Semanalmente</option>
@@ -52,15 +52,16 @@
 </div>
 
 <?php
-if ( isset($_POST['nomeContato'] ) ){
-   require '../classes/Tarefas.class.php';
+if ( isset($_POST['titulo'] ) ){
+   require '../Classes/Tarefas.class.php';
    $c = new Tarefa();
+
    $titu = $_POST['titulo'];
    $desc = $_POST['descricao'];
-   $datac = $_POST['dataconclusao'];
-   $horac = $_POST['horaconclusao'];
-   $datal = $_POST['datalembrete'];
-   $horal = $_POST['horalembrete'];
+   $datac = $_POST['dataConclusao'];
+   $horac = $_POST['horaConclusao'];
+   $datal = $_POST['dataLembrete'];
+   $horal = $_POST['horaLembrete'];
    $reco = $_POST['recorrencia'];
 
 
