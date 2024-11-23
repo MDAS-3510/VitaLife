@@ -111,8 +111,8 @@ public function tabelaTarefas($txt_pesquisa, $inicio, $quantidade){
                descricao,
                DATE_FORMAT(dataConclusao, '%d/%m/%Y') AS dataConclusao,
                horaConclusao
-         FROM tarefas
-         WHERE
+               FROM tarefas
+               WHERE
                titulo = :titulo
                OR descricao LIKE :descricao
                OR DATE_FORMAT(dataConclusao, '%d/%m/%Y') LIKE :data_pesquisa
@@ -142,6 +142,14 @@ public function tabelaTarefas($txt_pesquisa, $inicio, $quantidade){
 
    return $dados;
 }
+   public function verificar($idTarefas, $verificacao){
+      $sql = "UPDATE tarefas SET verificacao = :v WHERE idTarefas = :i";
+      $sql = $this->pdo->prepare($sql);
+      $sql->bindValue(":i", $idTarefas);
+      $sql->bindValue(":v", $verificacao);
+      $sql->execute();
+   }
 }
+
 
 ?>

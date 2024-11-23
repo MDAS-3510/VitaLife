@@ -42,23 +42,27 @@ $inicio = ($quantidade * $pagina) - $quantidade;
 
 $txt_pesquisa = isset($_POST['txt_pesquisa']) ? $_POST['txt_pesquisa'] : "";
 
+if (isset($_GET['idTarefas'])) {
+   $id = $_GET['idTarefas'];
+   $verificacao = (isset($_GET['verificacao']) && $_GET['verificacao'] == '0') ? '1' : '0';
+   $contato->verificar($id, $verificacao);
+}
+
 $dados = $contato->tabelaTarefas($txt_pesquisa, $inicio, $quantidade);
 
 foreach ($dados as $dado) {
-?>
-
-<tr>
-   <td>
-         <a class="btn btn-secondary btn-sm" href="index.php?menuop=tarefas&pagina=<?=$pagina?>&idTarefas=<?=$dado['idTarefas']?>&verificacao=<?=$dado['verificacao']?>" >
-            <?php
-               if($dado['verificacao']==0){
-                     echo '<i class="bi bi-square"></i>';
-               }else{
-                     echo '<i class="bi bi-check-square"></i>';
+   ?>
+      <td>
+         <a class="btn btn-secondary btn-sm" href="index.php?menuop=tarefas&paginas=<?= $pagina ?>&idTarefas=<?= $dado['idTarefas'] ?>&verificacao=<?= $dado['verificacao'] ?>">
+               <?php
+               if ($dado['verificacao'] == 0) {
+                  echo '<i class="bi bi-square"></i>';
+               } else {
+                  echo '<i class="bi bi-check-square"></i>';
                }
-            ?>
+               ?>
          </a>
-   </td>
+      </td>
             <td><?= $dado["titulo"] ?></td>
             <td><?= $dado["descricao"] ?></td>
             <td><?= $dado["dataConclusao"] ?></td>

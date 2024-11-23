@@ -109,7 +109,7 @@ $sql = "SELECT
             OR telefoneContato LIKE :telefoneContato";
 
 if (!is_null($favorito)) {
-      $sql .= " AND flagFavoritoContato = :flagFavorito";
+      $sql .= " AND flagFavoritoContato = :flagFavoritoContato";
 }
 
 $sql .= " ORDER BY flagFavoritoContato DESC, nomeContato ASC
@@ -124,7 +124,7 @@ $query->bindValue(':inicio', (int) $inicio, PDO::PARAM_INT);
 $query->bindValue(':quantidade', (int) $quantidade, PDO::PARAM_INT);
 
 if (!is_null($favorito)) {
-      $query->bindValue(':flagFavorito', (int) $favorito, PDO::PARAM_INT);
+      $query->bindValue(':flagFavoritoContato', (int) $favorito, PDO::PARAM_INT);
 }
 
 $query->execute();
@@ -136,9 +136,8 @@ public function atualizarFavorito($idContato, $flagFavoritoContato) {
    $sql = "UPDATE contatos SET flagFavoritoContato = :f WHERE idContato = :i";
    $sql = $this->pdo->prepare($sql);
 
-   // Vincula os valores aos placeholders
-   $sql->bindValue(':i', $idContato, PDO::PARAM_INT);
-   $sql->bindValue(':f', $flagFavoritoContato, PDO::PARAM_INT);
+   $sql->bindValue(':i', $idContato);
+   $sql->bindValue(':f', $flagFavoritoContato);
 
 
    $sql->execute();

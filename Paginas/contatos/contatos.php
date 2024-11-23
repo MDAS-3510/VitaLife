@@ -18,7 +18,7 @@ $contato = new Contato();
 <div>
    <br>
    <form action="index.php?menuop=contatos" method="post">
-      <input  type="text" name="txt_pesquisa">
+      <input  type="text" name="txt_pesquisa" value="Pesquisa">
       <button class="btn btn-outline-success btn-sm" type="submit"><i class="bi bi-search"></i>Pesquisar</button>
 
    </form>
@@ -27,10 +27,9 @@ $contato = new Contato();
 <div class="tabela">
 <table class="table table-dark table-striped table-bordered table-sm">
    <thead class="thead-dark">
+
       <tr>
-      <th>
-            <i class="bi bi-star-fill"></i>
-         </th>
+         <th> <i class="bi bi-star-fill"></i></th>
          <th scope="col">id</th>
          <th scope="col">Nome</th>
          <th scope="col">Email</th>
@@ -39,7 +38,6 @@ $contato = new Contato();
          <th scope="col">CRM</th>
          <th scope="col">Editar</th>
          <th scope="col">Excluir</th>
-         
       </tr>
    </thead>
    <tbody>
@@ -54,47 +52,49 @@ $txt_pesquisa = isset($_POST['txt_pesquisa']) ? $_POST['txt_pesquisa'] : "";
 // Inicializa a variável favorito
 $favorito = isset($_GET['flagFavoritoContato']) ? (int)$_GET['flagFavoritoContato'] : null;
 
+if (isset($_GET['flagFavoritoContato'])) {
+   $id = isset($_GET['idContato']) ? (int)$_GET['idContato'] : null;
+   $flag = (int)$_GET['flagFavoritoContato'];
+
+   if ($id !== null && $flag !== null) {
+       $contato->atualizarFavorito($id, $flag);
+   }
+}
+
+
 $dados = $contato->tabelaContatos($txt_pesquisa, $inicio, $quantidade, $favorito);
 
 foreach ($dados as $dado) {
 ?>
-<td>
-            <?php
-            if ( isset($_POST['idContato'] ) ){
-               $id = $_POST['idContato'];
-               $flag = $_POST['flagFavoritoContato'];
-
-               $contato->atualizarFavorito($id,$flag);
-
-            }
-            if($dado["flagFavoritoContato"]==1){
-               echo "<a href=\"#\" class=\"flagFavoritoContato link-warning\" title=\"Favorito\" id=\"{$dado["idContato"]}\">
-               <i class=\"bi bi-star-fill\"></i>
-               </a>";
-            }else{
-               echo "<a href=\"#\" class=\"flagFavoritoContato link-warning\" title=\"Não Favorito\" id=\"{$dado["idContato"]}\">
-               <i class=\"bi bi-star\"></i>
-               </a>";
-            }
-            ?>
-            
-
-      <tr>
-            <td><?= $dado["idContato"] ?></td>
-            <td><?= $dado["nomeContato"] ?></td>
-            <td><?= $dado["emailContato"] ?></td>
-            <td><?= $dado["telefoneContato"] ?></td>
-            <td><?= $dado["enderecoContato"] ?></td>
-            <td><?= $dado["crmContato"] ?></td>
-            <td><a class="btn btn-outline-warning btn-sm" href="index.php?menuop=editar-contato&idContato=<?= $dado["idContato"] ?>"><i class="bi bi-pencil-square"></i></a></td>
-            <td><a class="btn btn-outline-danger btn-sm"  href="index.php?menuop=excluir-contato&idContato=<?= $dado["idContato"] ?>"><i class="bi bi-trash"></i></a></td>
-         </tr>
-            <?php
+   <tr>
+      <td>
+      <?php
+   
+         if($dado["flagFavoritoContato"]==1){
+            echo "<a href=\"#\" class=\"flagFavoritoContato link-warning\" title=\"Favorito\" id=\"{$dado["idContato"]}\">
+                  <i class=\"bi bi-star-fill\"></i>
+                  </a>";
+         }else{
+            echo "<a href=\"#\" class=\"flagFavoritoContato link-warning\" title=\"Não Favorito\" id=\"{$dado["idContato"]}\">
+                  <i class=\"bi bi-star\"></i>
+                  </a>";
          }
          ?>
-      </td>
+         </td>
+         <td><?= $dado["idContato"] ?></td>
+         <td><?= $dado["nomeContato"] ?></td>
+         <td><?= $dado["emailContato"] ?></td>
+         <td><?= $dado["telefoneContato"] ?></td>
+         <td><?= $dado["enderecoContato"] ?></td>
+         <td><?= $dado["crmContato"] ?></td>
+         <td><a class="btn btn-outline-warning btn-sm" href="index.php?menuop=editar-contato&idContato=<?= $dado["idContato"] ?>"><i class="bi bi-pencil-square"></i></a></td>
+         <td><a class="btn btn-outline-danger btn-sm"  href="index.php?menuop=excluir-contato&idContato=<?= $dado["idContato"] ?>"><i class="bi bi-trash"></i></a></td>
+      </tr>
+      <?php
+      }
+      ?>
    </tbody>
-</table>
+   </table>
 </div>
 
 
