@@ -94,44 +94,45 @@ public function deletarContato($id){
 }
 
 public function tabelaContatos($txt_pesquisa, $inicio, $quantidade, $favorito = null) {
-$sql = "SELECT
-            idContato,
-            UPPER(nomeContato) AS nomeContato,
-            LOWER(emailContato) AS emailContato,
-            telefoneContato,
-            UPPER(enderecoContato) AS enderecoContato,
-            crmContato,
-            flagFavoritoContato
-         FROM contatos
-         WHERE
-            idContato = :idContato
-            OR nomeContato LIKE :nomeContato
-            OR telefoneContato LIKE :telefoneContato";
+   $sql = "SELECT
+               idContato,
+               UPPER(nomeContato) AS nomeContato,
+               LOWER(emailContato) AS emailContato,
+               telefoneContato,
+               UPPER(enderecoContato) AS enderecoContato,
+               crmContato,
+               flagFavoritoContato
+               FROM contatos
+               WHERE
+               idContato = :idContato
+               OR nomeContato LIKE :nomeContato
+               OR telefoneContato LIKE :telefoneContato";
 
-if (!is_null($favorito)) {
+   // Adiciona filtro de favorito, se necessário
+   if (!is_null($favorito)) {
       $sql .= " AND flagFavoritoContato = :flagFavoritoContato";
+   }
+
+   $sql .= " ORDER BY flagFavoritoContato DESC, nomeContato ASC
+               LIMIT :inicio, :quantidade";
+
+   $sql = $this->pdo->prepare($sql);
+
+   $sql->bindValue(':idContato', (is_numeric($txt_pesquisa) ? $txt_pesquisa : 0), PDO::PARAM_INT);
+   $sql->bindValue(':nomeContato', "%$txt_pesquisa%", PDO::PARAM_STR);
+   $sql->bindValue(':telefoneContato', "%$txt_pesquisa%", PDO::PARAM_STR);
+
+   $sql->bindValue(':inicio', (int) $inicio, PDO::PARAM_INT);
+   $sql->bindValue(':quantidade', (int) $quantidade, PDO::PARAM_INT);
+
+   if (!is_null($favorito)) {
+      $sql->bindValue(':flagFavoritoContato', (int) $favorito, PDO::PARAM_INT);
+   }
+
+   $sql->execute();
+
+   return ($sql->rowCount() > 0) ? $sql->fetchAll(PDO::FETCH_ASSOC) : [];
 }
-
-$sql .= " ORDER BY flagFavoritoContato DESC, nomeContato ASC
-            LIMIT :inicio, :quantidade";
-
-$query = $this->pdo->prepare($sql);
-
-$query->bindValue(':idContato', (is_numeric($txt_pesquisa) ? $txt_pesquisa : 0), PDO::PARAM_INT);
-$query->bindValue(':nomeContato', "%$txt_pesquisa%", PDO::PARAM_STR);
-$query->bindValue(':telefoneContato', "%$txt_pesquisa%", PDO::PARAM_STR);
-$query->bindValue(':inicio', (int) $inicio, PDO::PARAM_INT);
-$query->bindValue(':quantidade', (int) $quantidade, PDO::PARAM_INT);
-
-if (!is_null($favorito)) {
-      $query->bindValue(':flagFavoritoContato', (int) $favorito, PDO::PARAM_INT);
-}
-
-$query->execute();
-
-return ($query->rowCount() > 0) ? $query->fetchAll(PDO::FETCH_ASSOC) : [];
-}
-
 public function atualizarFavorito($idContato, $flagFavoritoContato) {
    $sql = "UPDATE contatos SET flagFavoritoContato = :f WHERE idContato = :i";
    $sql = $this->pdo->prepare($sql);

@@ -50,37 +50,30 @@ $inicio = ($quantidade * $pagina) - $quantidade;
 $txt_pesquisa = isset($_POST['txt_pesquisa']) ? $_POST['txt_pesquisa'] : "";
 
 // Inicializa a variável favorito
+
 $favorito = isset($_GET['flagFavoritoContato']) ? (int)$_GET['flagFavoritoContato'] : null;
 
-if (isset($_GET['flagFavoritoContato'])) {
-   $id = isset($_GET['idContato']) ? (int)$_GET['idContato'] : null;
-   $flag = (int)$_GET['flagFavoritoContato'];
-
-   if ($id !== null && $flag !== null) {
-       $contato->atualizarFavorito($id, $flag);
-   }
+if (isset($_GET['idContato'], $_GET['flagFavoritoContato'])) {
+    $id = (int)$_GET['idContato'];
+    $flag = (int)$_GET['flagFavoritoContato'];
+    $contato->atualizarFavorito($id, $flag);
 }
-
 
 $dados = $contato->tabelaContatos($txt_pesquisa, $inicio, $quantidade, $favorito);
 
 foreach ($dados as $dado) {
-?>
-   <tr>
-      <td>
-      <?php
-   
-         if($dado["flagFavoritoContato"]==1){
-            echo "<a href=\"#\" class=\"flagFavoritoContato link-warning\" title=\"Favorito\" id=\"{$dado["idContato"]}\">
-                  <i class=\"bi bi-star-fill\"></i>
-                  </a>";
-         }else{
-            echo "<a href=\"#\" class=\"flagFavoritoContato link-warning\" title=\"Não Favorito\" id=\"{$dado["idContato"]}\">
-                  <i class=\"bi bi-star\"></i>
-                  </a>";
-         }
+    $isFavorito = $dado["flagFavoritoContato"] == 1;
+    ?>
+        <td>
+            <a href="#" 
+               class="flagFavoritoContato link-warning" 
+               title="<?= $isFavorito ? 'Favorito' : 'Não Favorito'; ?>" 
+               id="<?= $dado["idContato"]; ?>">
+                <i class="bi <?= $isFavorito ? 'bi-star-fill' : 'bi-star'; ?>"></i>
+            </a>
+        </td>
+    <?php
          ?>
-         </td>
          <td><?= $dado["idContato"] ?></td>
          <td><?= $dado["nomeContato"] ?></td>
          <td><?= $dado["emailContato"] ?></td>
