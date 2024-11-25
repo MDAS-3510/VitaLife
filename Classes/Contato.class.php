@@ -134,16 +134,23 @@ public function tabelaContatos($txt_pesquisa, $inicio, $quantidade, $favorito = 
    return ($sql->rowCount() > 0) ? $sql->fetchAll(PDO::FETCH_ASSOC) : [];
 }
 public function atualizarFavorito($idContato, $flagFavoritoContato) {
-   $sql = "UPDATE contatos SET flagFavoritoContato = :f WHERE idContato = :i";
-   $sql = $this->pdo->prepare($sql);
+   try {
+       $sql = "UPDATE contatos SET flagFavoritoContato = :f WHERE idContato = :i";
+       $sql = $this->pdo->prepare($sql);
 
-   $sql->bindValue(':i', $idContato);
-   $sql->bindValue(':f', $flagFavoritoContato);
+       $sql->bindValue(':i', $idContato, PDO::PARAM_INT);
+       $sql->bindValue(':f', $flagFavoritoContato, PDO::PARAM_INT);
 
+       $sql->execute();
 
-   $sql->execute();
+       // Retornar o número de linhas afetadas
+       return $sql->rowCount();
+   } catch (PDOException $e) {
+       // Lidar com a exceção (log, mensagem de erro, etc.)
+       error_log($e->getMessage()); // Log da exceção
+       return false; // Retornar falso em caso de erro
+   }
 }
-
 
 
 }

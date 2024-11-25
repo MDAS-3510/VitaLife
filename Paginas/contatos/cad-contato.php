@@ -1,4 +1,6 @@
-
+<body>
+<script src="/js/validation.js"></script>
+</body>
 
 
 <h3><i class="bi bi-person-square"></i> Cadastro de Contato</h3>
@@ -14,7 +16,7 @@
                   Está correto.
                </div>
                <div class="invalid-feedback">
-                  Campo obrigatório de no máximo 255 caracteres 
+                  Campo obrigatório de no máximo 255 caracteres
                </div>
          </div>
       </div>

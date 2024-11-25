@@ -65,7 +65,7 @@ foreach ($dados as $dado) {
     $isFavorito = $dado["flagFavoritoContato"] == 1;
     ?>
         <td>
-            <a href="#" 
+            <a href="#" name="flagFavoritoContato"
                class="flagFavoritoContato link-warning" 
                title="<?= $isFavorito ? 'Favorito' : 'Não Favorito'; ?>" 
                id="<?= $dado["idContato"]; ?>">
