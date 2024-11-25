@@ -72,7 +72,7 @@ if ( isset($_POST['nomeContato'] ) ){
    
    $c->inserirContato( $contato, $email, $tel, $endereco, $crm );
 
-
+   header("location: index.php?menuop=contatos");
 }
 ?>
 

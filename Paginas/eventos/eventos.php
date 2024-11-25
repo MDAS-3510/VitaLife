@@ -57,7 +57,7 @@ $contato = new Evento();
                     <td>
                         <a class="btn btn-secondary btn-sm" href="index.php?menuop=eventos&pagina=<?= $pagina ?>&idEventos=<?= $dado['idEventos'] ?>&verificacao=<?= $dado['verificacao'] ?>">
                             <?php
-                            if ($dados['verificacao'] == 0) {
+                            if ($dado['verificacao'] == 0) {
                                 echo '<i class="bi bi-square"></i>';
                             } else {
                                 echo '<i class="bi bi-check-square"></i>';
@@ -73,11 +73,11 @@ $contato = new Evento();
                     <td class="text-nowrap"><?= $dado['horaFim'] ?></td>
 
                     <td class="text-center">
-                        <a class="btn btn-outline-warning btn-sm" href="index.php?menuop=editar-evento&idEvento=<?= $dado['idEventos'] ?>"><i class="bi bi-pencil-square"></i></a>
+                        <a class="btn btn-outline-warning btn-sm" href="index.php?menuop=editar-eventos&idEventos=<?= $dado['idEventos'] ?>"><i class="bi bi-pencil-square"></i></a>
 
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-outline-danger btn-sm" href="index.php?menuop=excluir-evento&idEvento=<?= $dado['idEventos'] ?>"><i class="bi bi-trash-fill"></i></a>
+                        <a class="btn btn-outline-danger btn-sm" href="index.php?menuop=excluir-eventos&idEventos=<?= $dado['idEventos'] ?>"><i class="bi bi-trash-fill"></i></a>
                     </td>
 
 

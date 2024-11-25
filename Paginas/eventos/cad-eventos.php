@@ -11,7 +11,7 @@
         </div>
         <div class="mb-3">
             <label for="descricao" class="form-label">Descrição</label>
-            <textarea name="descricao"  cols="30" rows="5" class="form-control" required></textarea>
+            <textarea name="descricao" cols="30" rows="5" class="form-control" required></textarea>
         </div>
         <div class="row">
             <div class="mb-3 col-3">
@@ -33,7 +33,7 @@
                 <input class="form-control" type="time" name="horaFim">
             </div>
         </div>
-       
+
         <div class="mb-3">
             <input class="btn btn-success" type="submit" value="Adicionar" name="btnAdicionar">
         </div>
@@ -41,21 +41,21 @@
 </div>
 
 <?php
-if ( isset($_POST['titulo'] ) ){
-   require '../Classes/Eventos.class.php';
-   $c = new Evento();
+if (isset($_POST['titulo'])) {
+    require '../Classes/Evento.class.php';
+    $c = new Evento();
 
-   $titu = $_POST['titulo'];
-   $desc = $_POST['descricao'];
-   $dataInicio = $_POST['dataInicio'];
-   $horaInicio = $_POST['horaInicio'];
-   $dataFim = $_POST['dataFim'];
-   $horaFim = $_POST['horaFim'];
-
-
-
-   $c->inserirEvento($titu,$desc,$dataInicio, $horaInicio, $dataFim, $horaFim);
+    $titu = $_POST['titulo'];
+    $desc = $_POST['descricao'];
+    $dataInicio = $_POST['dataInicio'];
+    $horaInicio = $_POST['horaInicio'];
+    $dataFim = $_POST['dataFim'];
+    $horaFim = $_POST['horaFim'];
 
 
+
+    $c->inserirEvento($titu, $desc, $dataInicio, $horaInicio, $dataFim, $horaFim);
+
+    header("location: index.php?menuop=eventos");
 }
 ?>

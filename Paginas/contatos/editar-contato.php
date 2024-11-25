@@ -19,9 +19,8 @@ if (isset($_POST['nomeContato'])) {
       $crm = $_POST['crmContato'];
 
       if ($contato->alterarContato($id, $nome, $email, $tel, $end, $crm)) {
-            header("Location: index.php?menuop=contatos");
-            exit;
       }
+      header("location: index.php?menuop=contatos");
 }
 ?>
 <div>
@@ -58,37 +57,37 @@ if (isset($_POST['nomeContato'])) {
                         <div class="mb-3">
                               <label class="form-label" for="emailContato">Email</label>
                               <div class="input-group">
-                              <span class="input-group-text">@</span>
-                <input class="form-control" type="text" name="emailContato" value="<?=$dados['emailContato']?>">
-            </div>
+                                    <span class="input-group-text">@</span>
+                                    <input class="form-control" type="text" name="emailContato" value="<?= $dados['emailContato'] ?>">
+                              </div>
                         </div>
 
                         <div class="mb-3">
                               <label class="form-label" for="telefoneContato">Telefone</label>
                               <div class="input-group">
-                <span class="input-group-text">
-                    <i class="bi bi-telephone-fill"></i>
-                </span>
-                <input class="form-control" type="text" name="telefoneContato" value="<?=$dados['telefoneContato']?>">
-            </div>
+                                    <span class="input-group-text">
+                                          <i class="bi bi-telephone-fill"></i>
+                                    </span>
+                                    <input class="form-control" type="text" name="telefoneContato" value="<?= $dados['telefoneContato'] ?>">
+                              </div>
                         </div>
 
                         <div class="mb-3">
                               <label class="form-label" for="crmContato">CRM</label>
                               <div class="input-group">
-                              <span class="input-group-text">⚕</span>
-                <input class="form-control" type="text" name="crmContato" value="<?=$dados['crmContato']?>">
-            </div>
+                                    <span class="input-group-text">⚕</span>
+                                    <input class="form-control" type="text" name="crmContato" value="<?= $dados['crmContato'] ?>">
+                              </div>
                         </div>
 
                         <div class="mb-3">
                               <label class="form-label" for="enderecoContato">Endereço</label>
                               <div class="input-group">
-                <span class="input-group-text">
-                    <i class="bi bi-mailbox2"></i>
-                </span>
-                <input class="form-control" type="text" name="enderecoContato" value="<?=$dados['enderecoContato']?>">
-            </div>
+                                    <span class="input-group-text">
+                                          <i class="bi bi-mailbox2"></i>
+                                    </span>
+                                    <input class="form-control" type="text" name="enderecoContato" value="<?= $dados['enderecoContato'] ?>">
+                              </div>
                         </div>
 
                         <div class="mb-3">

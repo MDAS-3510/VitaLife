@@ -145,7 +145,7 @@ class Evento
     }
     public function verificar($idEventos, $verificacao)
     {
-        $sql = "UPDATE tarefas SET verificacao = :v WHERE idEventos = :i";
+        $sql = "UPDATE eventos SET verificacao = :v WHERE idEventos = :i";
         $sql = $this->pdo->prepare($sql);
         $sql->bindValue(":i", $idEventos);
         $sql->bindValue(":v", $verificacao);

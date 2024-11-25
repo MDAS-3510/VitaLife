@@ -67,7 +67,7 @@ if ( isset($_POST['titulo'] ) ){
 
 
    $c->inserirTarefa($titu,$desc,$datac,$horac,$datal,$horal,$reco);
-
+   header("location: index.php?menuop=tarefas");
 
 }
 ?>
