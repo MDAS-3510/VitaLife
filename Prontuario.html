@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prontuário do Paciente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .prontuario {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .prontuario th, .prontuario td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .prontuario th {
+            background-color: #2198A9;
+            color: white;
+        }
+
+        .prontuario tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .prontuario tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer button {
+            padding: 10px 20px;
+            background-color: #2198A9;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .footer button:hover {
+            background-color: #2198A9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Prontuário do Paciente</h2>
+
+        <!-- Informações do paciente -->
+        <p><strong>Nome do Paciente:</strong> João da Silva</p>
+        <p><strong>Data de Nascimento:</strong> 10/01/1980</p>
+        <p><strong>CPF:</strong> 123.456.789-00</p>
+
+        <!-- Tabela de consultas -->
+        <h3>Histórico de Consultas</h3>
+        <table class="prontuario">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Médico</th>
+                    <th>Especialidade</th>
+                    <th>Diagnóstico</th>
+                    <th>Prescrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>20/11/2024</td>
+                    <td>Dr. João Silva</td>
+                    <td>Cardiologia</td>
+                    <td>Hipertensão</td>
+                    <td>Losartana 50mg</td>
+                </tr>
+                <tr>
+                    <td>15/11/2024</td>
+                    <td>Dra. Maria Oliveira</td>
+                    <td>Endocrinologia</td>
+                    <td>Diabetes Tipo 2</td>
+                    <td>Metformina 500mg</td>
+                </tr>
+                <!-- Adicionar mais registros conforme necessário -->
+            </tbody>
+        </table>
+
+        <div class="footer">
+            <button onclick="imprimirProntuario()">Imprimir Prontuário</button>
+        </div>
+    </div>
+
+    <script>
+        // Função para imprimir o prontuário
+        function imprimirProntuario() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

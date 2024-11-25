@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Consulta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .medico-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .medico-header img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .medico-info h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .medico-info p {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .horarios {
+            margin-top: 20px;
+        }
+
+        .horarios h3 {
+            margin-bottom: 10px;
+        }
+
+        .horarios ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .horarios ul li {
+            margin: 5px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .horarios ul li button {
+        width: 10%;
+        padding: 10px;
+        background-color: #2198A9;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        }
+
+        .horarios ul li button:hover {
+            background-color: #000000;
+        }
+
+        .horarios ul li button:disabled {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="medico-header">
+            <img src="imagem/medica2.png" alt="Foto do Médico">
+            <div class="medico-info">
+                <h2>Dra. Polliana Alvarenga De Oliveira</h2>
+                <p>Oftalmologia</p>
+                <p>CRM-SP 278907</p>
+                <p>Descrição: Médica experiente com 7 anos de atuação na área.</p>
+            </div>
+        </div>
+
+        <div class="horarios">
+            <h3>Horários Disponíveis</h3>
+            <ul id="horarios-lista">
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function agendarConsulta(horario) {
+            alert(`Consulta agendada para: ${horario}`);
+            // Aqui você pode enviar os dados para o servidor via POST usando AJAX
+        }
+
+        const horarios = [
+            { data: '26/11/2024', hora: '09:00' },
+            { data: '26/11/2024', hora: '10:30' },
+            { data: '27/11/2024', hora: '12:00' },
+            { data: '27/11/2024', hora: '14:30' },
+            { data: '27/11/2024', hora: '16:00' },
+            { data: '27/11/2024', hora: '17:30' },
+            { data: '27/11/2024', hora: '19:00' },
+        ];
+
+        const listaHorarios = document.getElementById('horarios-lista');
+        horarios.forEach((horario) => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <span>${horario.data} - ${horario.hora}</span>
+                <button onclick="agendarConsulta('${horario.data} - ${horario.hora}')">Agendar</button>
+            `;
+            listaHorarios.appendChild(li);
+        });
+    </script>
+</body>
+</html>
+
+    <script>
+        // Função para agendar consulta (substituir com integração ao banco)
+        function agendarConsulta(horario) {
+            alert(Consulta agendada para: ${horario});
+            // Aqui você pode enviar os dados para o servidor via POST usando AJAX
+        }
+    </script>
+</body>
+</html>

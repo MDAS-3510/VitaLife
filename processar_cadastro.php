@@ -21,13 +21,13 @@ $stmt->bind_param("ssss", $nome, $tipo, $identificador, $email);
 
 if ($stmt->execute()) {
    if ($tipo == 'paciente') {
-         header("Location: Telainicial.html");
+         header("Location: Prontuario.html");
       exit();
    } elseif ($tipo == 'medico') {
-         header("Location: tela_medico.html");
+         header("Location: tela_medico.html"); 
       exit();
    } elseif ($tipo == 'gestor') {
-         header("Location: tela_gestor.html");
+         header("Location: Paginas");
       exit();
    }
 } else {

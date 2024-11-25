@@ -90,3 +90,46 @@ $contato = new Evento();
 </div>
 
 <ul class="pagination justify-content-center">
+    <?php
+    $pdo = new PDO("mysql:host=localhost;dbname=VitaLife", "root", "");
+
+    $sqlTotal = "SELECT COUNT(idEventos) as total FROM eventos";
+    $sql = $pdo->query($sqlTotal);
+    $result = $sql->fetch(PDO::FETCH_ASSOC);
+
+    $numTotal = $result['total'];
+
+    $totalPagina = ceil($numTotal / $quantidade);
+
+    echo "<li class='page-item'><span class='page-link'> Total de registros: " . $numTotal .  " </span></li> ";
+
+
+    echo '<li class="page-item"><a class="page-link" href="?menuop=contatos&pagina=1">Primeira Pagina</a></li>';
+
+    if ($pagina > 6) {
+    ?>
+        <li class="page-item"><a class="page-link" href="?menuop=contatos&pagina=<?php echo $pagina - 1 ?>">
+                <<< /a>
+        </li>
+    <?php
+    }
+
+    for ($i = 1; $i <= $totalPagina; $i++) {
+        if ($i >= ($pagina - 5) && $i <= ($pagina + 5)) {
+            if ($i == $pagina) {
+                echo "<li class='page-item active'><span class='page-link'>$i</span></li>";
+            } else {
+                echo "<li class='page-item'><a class='page-link' href=\"?menuop=contatos&pagina={$i}\"> {$i} </a></li>";
+            }
+        }
+    }
+
+    if ($pagina < $totalPagina - 5) {
+    ?>
+        <li class="page-item"><a class="page-link" href="?menuop=contatos&pagina=<?php echo $pagina + 1 ?>">>></a></li>
+    <?php
+    }
+
+    echo "<li class='page-item'> <a class='page-link' href=\"?menuop=contatos&pagina=$totalPagina\">Ultima Pagina</a></li>";
+    ?>
+</ul>
