@@ -32,7 +32,8 @@ if (isset($_POST['titulo'])) {
       <i class="bi bi-list-task"></i> Editar Tarefa
    </h3>
 </header>
-<div>
+
+
    <form class="needs-validation" method="post" novalidate>
       <div class="mb-3 col-3">
          <label for="idTarefa" class="form-label"></label>

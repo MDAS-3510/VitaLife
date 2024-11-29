@@ -36,7 +36,9 @@ if (isset($_POST['titulo'])) {
         <i class="bi bi-calendar-check"></i> Editar Evento
     </h3>
 </header>
-<div>
+
+<div class="container" style="background-color: white;
+border-radius: 6px; box-shadow: 2px 2px 2px rgba(0,0,0,.2); padding: 12px;" >
     <form class="needs-validation" method="post" novalidate>
         <div class="mb-3 col-3">
             <label for="idEvento" class="form-label">ID</label>

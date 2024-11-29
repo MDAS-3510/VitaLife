@@ -36,11 +36,11 @@ class Evento
         $sql->bindValue(":hi", $horaInicio);
         $sql->bindValue(":df", $dataFim);
         $sql->bindValue(":hf", $horaFim);
-        
+
         $sql->execute();
     }
 
-    public function alterarEvento($idEventos,$titulo,$descricao,$dataInicio,$horaInicio,$dataFim,$horaFim)
+    public function alterarEvento($idEventos, $titulo, $descricao, $dataInicio, $horaInicio, $dataFim, $horaFim)
     {
         $sql = "UPDATE eventos SET titulo= :t, descricao = :d, dataInicio = :di , horaInicio = :hi, dataFim = :df, horaFim = :hf WHERE idEventos = :i";
         $sql = $this->pdo->prepare($sql);
@@ -101,9 +101,8 @@ class Evento
         $sql->execute();
     }
 
-    public function tabelaEventos($txt_pesquisa, $inicio, $quantidade)
-    {
-        // Consulta SQL para evitar SQL Injection
+    public function tabelaEventos($txt_pesquisa, $inicio, $quantidade){
+        $inicio = max(0, (int)$inicio);
         $sql = "SELECT
                idEventos,
                verificacao,

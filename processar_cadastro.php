@@ -9,6 +9,13 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
    die("Erro de conexão: " . $conn->connect_error);
 }
+if (isset($_POST ['nome'])) {
+   echo "Teste";
+}else{
+   echo "Erro";
+}
+
+
 
 $nome = $_POST['nome'];
 $identificador = $_POST['identificador'];
@@ -24,7 +31,7 @@ if ($stmt->execute()) {
          header("Location: Prontuario.html");
       exit();
    } elseif ($tipo == 'medico') {
-         header("Location: tela_medico.html"); 
+         header("Location: tela_medico.html");
       exit();
    } elseif ($tipo == 'gestor') {
          header("Location: Paginas");

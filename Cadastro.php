@@ -25,7 +25,7 @@
 <div class="form-container">
    <div class="buttonsform"></div>
    <h2>Cadastrar-se </h2>
-   <form id="cadastro-form" action="processar_cadastro.php" method="POST">
+   <form id="cadastro-form" action="processar_cadastro.php" method="post">
       <label for="nome">Nome Completo:</label>
       <input type="text" id="nome" name="nome" required>
 

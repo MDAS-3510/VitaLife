@@ -1,9 +1,28 @@
 <header>
-   <h3>
-      <i class="bi bi-list-task"></i> Cadastro de Tarefa
-   </h3>
+
 </header>
-<div>
+
+<style>
+   .btn-custom {
+      background-color: #2198A9;
+      /* Cor de fundo */
+      color: white;
+      /* Cor do texto */
+      border: none;
+      /* Remover borda */
+   }
+
+   .btn-custom:hover {
+      background-color: #1a7a8f;
+      /* Cor de fundo ao passar o mouse */
+      color: white;
+      /* Cor do texto ao passar o mouse */
+   }
+</style>
+
+
+<div class="container" style="background-color: white;
+border-radius: 6px; box-shadow: 2px 2px 2px rgba(0,0,0,.2); padding: 12px; margin-top: 30px; margin-bottom: 20px;">
    <form class="needs-validation" method="post">
       <div class="mb-3">
             <label for="tituloTarefa" class="form-label">Título</label>
@@ -46,7 +65,7 @@
             </div>
       </div>
       <div class="mb-3">
-            <input class="btn btn-success" type="submit" value="Adicionar" name="btnAdicionar">
+            <input class="btn btn-custom" type="submit" value="Adicionar" name="btnAdicionar">
       </div>
    </form>
 </div>
@@ -66,8 +85,10 @@ if ( isset($_POST['titulo'] ) ){
 
 
 
-   $c->inserirTarefa($titu,$desc,$datac,$horac,$datal,$horal,$reco);
-   header("location: index.php?menuop=tarefas");
+   if ($c->inserirTarefa($titu,$desc,$datac,$horac,$datal,$horal,$reco)){
 
+   }
+
+   header("location: index.php?menuop=tarefas");
 }
 ?>

@@ -1,9 +1,23 @@
-<header>
-    <h3>
-        <i class="bi bi-calendar-check"></i> Cadastro de Evento
-    </h3>
-</header>
-<div>
+<style>
+    .btn-custom {
+        background-color: #2198A9;
+        /* Cor de fundo */
+        color: white;
+        /* Cor do texto */
+        border: none;
+        /* Remover borda */
+    }
+
+    .btn-custom:hover {
+        background-color: #1a7a8f;
+        /* Cor de fundo ao passar o mouse */
+        color: white;
+        /* Cor do texto ao passar o mouse */
+    }
+</style>
+
+<div class="container" style="background-color: white;
+border-radius: 6px; box-shadow: 2px 2px 2px rgba(0,0,0,.2); padding: 12px; margin-top: 30px; margin-bottom: 20px;">
     <form class="needs-validation" method="post" novalidate>
         <div class="mb-3">
             <label for="titulo" class="form-label">Título</label>
@@ -35,11 +49,10 @@
         </div>
 
         <div class="mb-3">
-            <input class="btn btn-success" type="submit" value="Adicionar" name="btnAdicionar">
+            <input class="btn btn-custom" type="submit" value="Adicionar" name="btnAdicionar">
         </div>
     </form>
 </div>
-
 <?php
 if (isset($_POST['titulo'])) {
     require '../Classes/Evento.class.php';
@@ -56,6 +69,6 @@ if (isset($_POST['titulo'])) {
 
     $c->inserirEvento($titu, $desc, $dataInicio, $horaInicio, $dataFim, $horaFim);
 
-    header("location: index.php?menuop=eventos");
+    
 }
 ?>

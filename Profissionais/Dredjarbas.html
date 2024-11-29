@@ -70,82 +70,57 @@
         }
 
         .horarios ul li button {
-        width: 10%;
-        padding: 10px;
-        background-color: #2198A9;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: 0.3s ease;
-        margin-top: 20px;
-        margin-bottom: 30px;
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
         }
 
         .horarios ul li button:hover {
-            background-color: #000000;
-        }
-
-        .horarios ul li button:disabled {
-            background-color: #ccc;
-            color: #666;
-            cursor: not-allowed;
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="medico-header">
-            <img src="imagem/medico1.png" alt="Foto do Médico">
+            <!-- Foto do médico -->
+            <img src="" alt="Foto do Médico">
+            <!-- Informações do médico -->
             <div class="medico-info">
-                <h2>Dr. Edjarbas Maluf Hernandes</h2>
-                <p>Ginecologia, Obstetrícia</p>
-                <p>CRM: 662812</p>
-                <p>Descrição: Médico experiente com 10 anos de atuação na área.</p>
+                <h2>Dr. João Silva</h2>
+                <p>Especialidade: Cardiologia</p>
+                <p>CRM: 123456</p>
+                <p>Descrição: Médico experiente com 10 anos de atuação na área de cardiologia. Focado no bem-estar e saúde de seus pacientes.</p>
             </div>
         </div>
 
+        <!-- Lista de horários disponíveis -->
         <div class="horarios">
             <h3>Horários Disponíveis</h3>
-            <ul id="horarios-lista">
+            <ul>
+                <li>
+                    <span>26/11/2024 - 10:00</span>
+                    <button onclick="agendarConsulta('26/11/2024 - 10:00')">Agendar</button>
+                </li>
+                <li>
+                    <span>26/11/2024 - 14:00</span>
+                    <button onclick="agendarConsulta('26/11/2024 - 14:00')">Agendar</button>
+                </li>
+                <li>
+                    <span>27/11/2024 - 09:00</span>
+                    <button onclick="agendarConsulta('27/11/2024 - 09:00')">Agendar</button>
+                </li>
             </ul>
         </div>
     </div>
 
     <script>
-        function agendarConsulta(horario) {
-            alert(`Consulta agendada para: ${horario}`);
-            // Aqui você pode enviar os dados para o servidor via POST usando AJAX
-        }
-
-        const horarios = [
-            { data: '26/11/2025', hora: '09:00' },
-            { data: '26/11/2025', hora: '10:30' },
-            { data: '27/11/2025', hora: '12:00' },
-            { data: '27/11/2025', hora: '14:30' },
-            { data: '27/11/2025', hora: '16:00' },
-            { data: '27/11/2025', hora: '17:30' },
-            { data: '27/11/2025', hora: '19:00' },
-        ];
-
-        const listaHorarios = document.getElementById('horarios-lista');
-        horarios.forEach((horario) => {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <span>${horario.data} - ${horario.hora}</span>
-                <button onclick="agendarConsulta('${horario.data} - ${horario.hora}')">Agendar</button>
-            `;
-            listaHorarios.appendChild(li);
-        });
-    </script>
-</body>
-</html>
-
-    <script>
         // Função para agendar consulta (substituir com integração ao banco)
         function agendarConsulta(horario) {
-            alert(`Consulta agendada para ${horario}`);
+            alert(Consulta agendada para: ${horario});
             // Aqui você pode enviar os dados para o servidor via POST usando AJAX
         }
     </script>

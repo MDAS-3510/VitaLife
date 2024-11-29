@@ -1,20 +1,34 @@
-<body style="background-color: #EBFFFE;">
-
-
+<body style="background-color: white;">
    <script src="/js/validation.js"></script>
-
-   
 </body>
 
 
-<h3><i class="bi bi-person-square"></i> Cadastro de Contato</h3>
+
 
 </header>
+<style>
+   .btn-custom {
+      background-color: #2198A9;
+      /* Cor de fundo */
+      color: white;
+      /* Cor do texto */
+      border: none;
+      /* Remover borda */
+   }
+
+   .btn-custom:hover {
+      background-color: #1a7a8f;
+      /* Cor de fundo ao passar o mouse */
+      color: white;
+      /* Cor do texto ao passar o mouse */
+   }
+</style>
+
 <div class="container" style="background-color: white;
-border-radius: 6px; box-shadow: 2px 2px 2px rgba(0,0,0,.2); padding: 12px;" >
-   <div>
+border-radius: 6px; box-shadow: 2px 2px 2px rgba(0,0,0,.2); padding: 12px; margin-top: 50px; margin-bottom: 20px;">
+   <div >
       <form class="needs-validation" action="index.php?menuop=cad-contato" method="post" novalidate>
-         <div class="mb-3">
+         <div  class="mb-3">
             <label class="form-label" for="nomeContato">Nome</label>
             <div class="input-group">
                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
@@ -53,13 +67,16 @@ border-radius: 6px; box-shadow: 2px 2px 2px rgba(0,0,0,.2); padding: 12px;" >
          <div class="mb-3">
             <label class="form-label" for="crmContato">CRM</label>
             <div class="input-group">
-               <span class="input-group-text"><i class="bi bi-mailbox2"></i></span>
+               <span class="input-group-text"><i class="">⚕</i></span>
                <input class="form-control" type="text" name="crmContato" required>
+               <div class="invalid-feedback">
+                  Apenas 6 Numeros
+               </div>
             </div>
          </div>
 
          <div class="mb-3">
-            <input class="btn btn-success" type="submit" value="Adicionar" name="btnAdicionar">
+            <input class="btn btn-custom"  type="submit" value="Adicionar" name="btnAdicionar">
          </div>
       </form>
    </div>
@@ -78,8 +95,8 @@ if (isset($_POST['nomeContato'])) {
    $crm      = $_POST['crmContato'];
 
 
-   $c->inserirContato($contato, $email, $tel, $endereco, $crm);
+   if ($c->inserirContato($contato, $email, $tel, $endereco, $crm)){
 
-   header("location: index.php?menuop=contatos");
+}
 }
 ?>

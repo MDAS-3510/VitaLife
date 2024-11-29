@@ -103,7 +103,7 @@ class Tarefa{
    }
 
 public function tabelaTarefas($txt_pesquisa, $inicio, $quantidade){
-   // Consulta SQL para evitar SQL Injection
+   $inicio = max(0, (int)$inicio);
    $sql = "SELECT
                idTarefas,
                verificacao,

@@ -28,9 +28,21 @@ if (isset($_POST['nomeContato'])) {
             label {
                   display: block;
             }
+
+            .btn-custom {
+    background-color: #2198A9; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    border: none; /* Remover borda */
+}
+
+.btn-custom:hover {
+    background-color: #1a7a8f; /* Cor de fundo ao passar o mouse */
+    color: white; /* Cor do texto ao passar o mouse */
+}
       </style>
 
-
+<div class="container" style="background-color: white;
+border-radius: 6px; box-shadow: 2px 2px 2px rgba(0,0,0,.2); padding: 12px; margin-top: 30px; margin-bottom: 20px; " >
       <div class="row">
             <div class="col-6">
                   <form action="" method="post">
@@ -91,8 +103,9 @@ if (isset($_POST['nomeContato'])) {
                         </div>
 
                         <div class="mb-3">
-                              <input class="btn btn-warning" type="submit" value="Atualizar" name="btn-atualizar">
+                              <input class="btn btn-custom" type="submit" value="Atualizar" name="btn-atualizar">
                         </div>
                   </form>
             </div>
       </div>
+</div>
