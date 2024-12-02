@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prontuário Eletrônico</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        button.cancel {
+            background-color: #e74c3c;
+        }
+
+        button.cancel:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prontuário Eletrônico</h1>
+
+        <form id="prontuario-form">
+            <div class="form-group">
+                <label for="patient-name">Nome do Paciente</label>
+                <input type="text" id="patient-name" name="patient-name" placeholder="Digite o nome do paciente">
+            </div>
+
+            <div class="form-group">
+                <label for="patient-age">Idade</label>
+                <input type="number" id="patient-age" name="patient-age" placeholder="Digite a idade">
+            </div>
+
+            <div class="form-group">
+                <label for="patient-gender">Gênero</label>
+                <select id="patient-gender" name="patient-gender">
+                    <option value="">Selecione</option>
+                    <option value="male">Masculino</option>
+                    <option value="female">Feminino</option>
+                    <option value="other">Outro</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="diagnosis">Diagnóstico</label>
+                <textarea id="diagnosis" name="diagnosis" placeholder="Descreva o diagnóstico"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="treatment">Tratamento</label>
+                <textarea id="treatment" name="treatment" placeholder="Descreva o tratamento"></textarea>
+            </div>
+
+            <div class="actions">
+                <button type="button" onclick="saveData()">Salvar</button>
+                <button type="button" class="cancel" onclick="clearForm()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function saveData() {
+            const name = document.getElementById('patient-name').value;
+            const age = document.getElementById('patient-age').value;
+            const gender = document.getElementById('patient-gender').value;
+            const diagnosis = document.getElementById('diagnosis').value;
+            const treatment = document.getElementById('treatment').value;
+
+            if (!name || !age || !gender) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            alert('Dados salvos com sucesso!');
+            console.log({ name, age, gender, diagnosis, treatment });
+        }
+
+        function clearForm() {
+            if (confirm('Tem certeza que deseja cancelar? As informações serão apagadas.')) {
+                document.getElementById('prontuario-form').reset();
+            }
+        }
+    </script>
+</body>
+</html>

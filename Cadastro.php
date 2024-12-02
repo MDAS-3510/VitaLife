@@ -14,7 +14,7 @@
       if (tipo === "medico") {
          identificadorLabel.textContent = "CRM:";
       } else if (tipo === "gestor") {
-         identificadorLabel.textContent = "Matrícula:";
+         identificadorLabel.textContent = "Registro:";
       } else {
          identificadorLabel.textContent = "CPF:";
       }

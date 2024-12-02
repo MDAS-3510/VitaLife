@@ -31,7 +31,7 @@ if ($stmt->execute()) {
          header("Location: Prontuario.html");
       exit();
    } elseif ($tipo == 'medico') {
-         header("Location: tela_medico.html");
+         header("Location: Telamedico.html");
       exit();
    } elseif ($tipo == 'gestor') {
          header("Location: Paginas");
