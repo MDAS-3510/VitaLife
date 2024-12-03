@@ -63,27 +63,12 @@ border-radius: 6px; box-shadow: 2px 2px 2px rgba(0,0,0,.2); padding: 12px; margi
                <input class="form-control" type="text" name="enderecoContato" required>
             </div>
          </div>
-
-         <div class="mb-3">
-            <label class="form-label" for="crmContato">CRM</label>
-            <div class="input-group">
-               <span class="input-group-text"><i class="">⚕</i></span>
-               <input class="form-control" type="text" name="crmContato" required>
-               <div class="invalid-feedback">
-                  Apenas 6 Numeros
-               </div>
-            </div>
-         </div>
-
          <div class="mb-3">
             <input class="btn btn-custom"  type="submit" value="Adicionar" name="btnAdicionar">
          </div>
       </form>
-   </div>
-</div>
+
 <?php
-
-
 if (isset($_POST['nomeContato'])) {
    require '../Classes/Contato2.class.php';
    $c = new Contato();
@@ -92,10 +77,9 @@ if (isset($_POST['nomeContato'])) {
    $email    = $_POST['emailContato'];
    $tel      = $_POST['telefoneContato'];
    $endereco = $_POST['enderecoContato'];
-   $crm      = $_POST['crmContato'];
 
 
-   if ($c->inserirContato($contato, $email, $tel, $endereco, $crm)){
+   if ($c->inserirContato($contato, $email, $tel, $endereco)){
 
 }
 }

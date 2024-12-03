@@ -27,10 +27,10 @@
    <h2>Cadastrar-se </h2>
    <form id="cadastro-form" action="processar_cadastro.php" method="post">
       <label for="nome">Nome Completo:</label>
-      <input type="text" id="nome" name="nome" required>
+      <input type="text" name="nome" required>
 
       <label for="nome">E-mail:</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" name="email" required>
 
       <label id="identificadorLabel" for="identificador">CPF:</label>
       <input type="text" id="identificador" name="identificador" required>
@@ -47,7 +47,7 @@
          <a href="#"><button>Cadastrar</button></a>
       </div>
 
-      <a href="Login.html">Já tem uma conta?</a>
+      <a href="Login.php">Já tem uma conta?</a>
 
    </form>
 </div>

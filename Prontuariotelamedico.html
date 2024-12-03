@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prontuário Eletrônico</title>
-    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
+            font-family: 'Poppins' sans-serif;
         }
 
         .container {
@@ -20,6 +24,7 @@
             background: white;
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
         }
 
         h1 {
@@ -59,7 +64,7 @@
 
         button {
             padding: 10px 20px;
-            background-color: #3498db;
+            background-color: #2198A9;
             color: white;
             border: none;
             border-radius: 5px;
@@ -68,7 +73,7 @@
         }
 
         button:hover {
-            background-color: #2980b9;
+            background-color: #000;
         }
 
         button.cancel {
@@ -78,13 +83,33 @@
         button.cancel:hover {
             background-color: #c0392b;
         }
+
+        .summary {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .summary h2 {
+            margin-bottom: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .prontuario-form{
+            margin-right: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Prontuário Eletrônico</h1>
 
-        <form id="prontuario-form">
+        <form id="prontuario-form" class="prontuario-form">
             <div class="form-group">
                 <label for="patient-name">Nome do Paciente</label>
                 <input type="text" id="patient-name" name="patient-name" placeholder="Digite o nome do paciente">
@@ -99,9 +124,9 @@
                 <label for="patient-gender">Gênero</label>
                 <select id="patient-gender" name="patient-gender">
                     <option value="">Selecione</option>
-                    <option value="male">Masculino</option>
-                    <option value="female">Feminino</option>
-                    <option value="other">Outro</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Outro">Outro</option>
                 </select>
             </div>
 
@@ -120,6 +145,15 @@
                 <button type="button" class="cancel" onclick="clearForm()">Cancelar</button>
             </div>
         </form>
+
+        <div id="summary" class="summary hidden">
+            <h2>Resumo do Prontuário:</h2>
+            <p><strong>Nome do Paciente:</strong> <span id="summary-name"></span></p>
+            <p><strong>Idade:</strong> <span id="summary-age"></span></p>
+            <p><strong>Gênero:</strong> <span id="summary-gender"></span></p>
+            <p><strong>Diagnóstico:</strong> <span id="summary-diagnosis"></span></p>
+            <p><strong>Tratamento:</strong> <span id="summary-treatment"></span></p>
+        </div>
     </div>
 
     <script>
@@ -135,15 +169,25 @@
                 return;
             }
 
-            alert('Dados salvos com sucesso!');
-            console.log({ name, age, gender, diagnosis, treatment });
+            document.getElementById('summary-name').innerText = name;
+            document.getElementById('summary-age').innerText = age;
+            document.getElementById('summary-gender').innerText = gender;
+            document.getElementById('summary-diagnosis').innerText = diagnosis;
+            document.getElementById('summary-treatment').innerText = treatment;
+
+            document.getElementById('prontuario-form').classList.add('hidden');
+            document.getElementById('summary').classList.remove('hidden');
         }
 
         function clearForm() {
-            if (confirm('Tem certeza que deseja cancelar? As informações serão apagadas.')) {
-                document.getElementById('prontuario-form').reset();
-            }
-        }
+    if (confirm('Tem certeza que deseja cancelar? As informações serão apagadas.')) {
+        document.getElementById('prontuario-form').reset();
+        
+        window.location.href = 'Telamedico.php';
+    } else {
+        return;
+    }
+}
     </script>
 </body>
 </html>

@@ -1,7 +1,6 @@
-
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
@@ -21,14 +20,13 @@
         }
     }
     </script>
-    </head>
-    <body>
-    <div class="form-container">
-    <div class="buttonsform"></div>
+</head>
+<body>
+<div class="form-container">
     <h2>Login</h2>
     <form id="cadastroForm" action="processar_login.php" method="POST">
         <label for="email">E-mail:</label>
-        <input type="text" id="email" required>
+        <input type="text" id="email" name="email" required> <!-- Adicionado name aqui -->
 
         <label id="identificadorLabel" for="identificador">CPF:</label>
         <input type="text" id="identificador" name="identificador" required>
@@ -41,10 +39,9 @@
         </select>
 
         <div class="roberta">
-            <a href="Telainicial.html"><button>Entrar</button></a>
+            <button type="submit">Entrar</button> <!-- Removido o link -->
         </div>
-
     </form>
-    </div>
-    </body>
+</div>
+</body>
 </html>

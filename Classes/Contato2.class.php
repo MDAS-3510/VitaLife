@@ -7,7 +7,6 @@ class Contato
    private $emailContato;
    private $telefoneContato;
    private $enderecoContato;
-   private $crmContato;
    private $favorito;
    private $pdo;
 
@@ -23,31 +22,29 @@ class Contato
          echo "<h3>nao consegui</h3>";
       }
    }
-   public function inserirContato($nomeContato, $emailContato,  $telefoneContato, $enderecoContato, $crmContato)
+   public function inserirContato($nomeContato, $emailContato,  $telefoneContato, $enderecoContato)
    {
-      $sql = "INSERT INTO contatos SET  nomecontato= :n, emailcontato = :e,  telefonecontato = :t, enderecocontato = :d, crmcontato = :c";
+      $sql = "INSERT INTO contatos SET  nomecontato= :n, emailcontato = :e,  telefonecontato = :t, enderecocontato = :d";
       $sql = $this->pdo->prepare($sql);
 
       $sql->bindValue(":n", $nomeContato);
       $sql->bindValue(":e", $emailContato);
       $sql->bindValue(":t", $telefoneContato);
       $sql->bindValue(":d", $enderecoContato);
-      $sql->bindValue(":c", $crmContato);
 
 
       $sql->execute();
    }
 
-   public function alterarContato($idContato, $nomeContato, $emailContato,  $telefoneContato, $enderecoContato, $crmContato)
+   public function alterarContato($idContato, $nomeContato, $emailContato,  $telefoneContato, $enderecoContato)
    {
-      $sql = "UPDATE contatos SET nomecontato = :n, emailcontato = :e, telefonecontato = :t, enderecocontato = :d, crmContato = :c WHERE idContato = :i";
+      $sql = "UPDATE contatos SET nomecontato = :n, emailcontato = :e, telefonecontato = :t, enderecocontato = :d WHERE idContato = :i";
       $sql = $this->pdo->prepare($sql);
       $sql->bindValue(':i', $idContato);
       $sql->bindValue(':n', $nomeContato);
       $sql->bindValue(':e', $emailContato);
       $sql->bindValue(':t', $telefoneContato);
       $sql->bindValue(':d', $enderecoContato);
-      $sql->bindValue(':c', $crmContato);
 
       $sql->execute();
    }
@@ -107,7 +104,6 @@ class Contato
                LOWER(emailContato) AS emailContato,
                telefoneContato,
                UPPER(enderecoContato) AS enderecoContato,
-               crmContato,
                flagFavoritoContato
             FROM contatos
             WHERE

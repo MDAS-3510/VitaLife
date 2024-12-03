@@ -58,7 +58,6 @@ $contato = new Contato();
             <th scope="col">Email</th>
             <th scope="col">Telefone</th>
             <th scope="col">Endereço</th>
-            <th scope="col">CRM</th>
             <th scope="col">Editar</th>
             <th scope="col">Excluir</th>
          </tr>
@@ -102,7 +101,6 @@ $contato = new Contato();
             <td><?= $dado["emailContato"] ?></td>
             <td><?= $dado["telefoneContato"] ?></td>
             <td><?= $dado["enderecoContato"] ?></td>
-            <td><?= $dado["crmContato"] ?></td>
             <td class="text-center">
                <a class="btn btn-outline-dark btn-sm" href="index.php?menuop=editar-contato&idContato=<?= $dado['idContato'] ?>"><i class="bi bi-pencil-square"></i></a>
             </td>

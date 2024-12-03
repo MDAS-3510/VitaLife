@@ -96,10 +96,31 @@
             color: #666;
             cursor: not-allowed;
         }
+
+        .voltar-button {
+            padding: 10px 20px;
+            background-color: #2198A9;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+            margin-top: 1px;
+            margin-bottom: 5px;
+        }
+
+        .voltar-button:hover {
+            background-color: #000000;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="">
+            <input class="voltar-button" value="Voltar" type="button" onclick="window.location.href='./Telaprofissionais.html';">
+        </div>
         <div class="medico-header">
             <img src="imagem/medico1.png" alt="Foto do Médico">
             <div class="medico-info">
@@ -120,7 +141,6 @@
     <script>
         function agendarConsulta(horario) {
             alert(`Consulta agendada para: ${horario}`);
-            // Aqui você pode enviar os dados para o servidor via POST usando AJAX
         }
 
         const horarios = [
@@ -147,10 +167,8 @@
 </html>
 
     <script>
-        // Função para agendar consulta (substituir com integração ao banco)
         function agendarConsulta(horario) {
             alert(`Consulta agendada para ${horario}`);
-            // Aqui você pode enviar os dados para o servidor via POST usando AJAX
         }
     </script>
 </body>

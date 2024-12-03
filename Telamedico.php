@@ -20,7 +20,6 @@
                   ;
             }
 
-            /* Estilização do menu lateral */
             .sidebar {
                   width: 250px;
                   background-color: #2c3e50;
@@ -48,7 +47,6 @@
                   background-color: #34495e;
             }
 
-            /* Área principal */
             .main {
                   flex: 1;
                   background-color: #ecf0f1;
@@ -100,6 +98,20 @@
                   padding: 10px;
                   background-color: #bdc3c7;
             }
+
+            .voltar-button{
+            width: 40%;
+            padding: 10px;
+            background-color: #fff;
+            color: #2198A9;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            }
       </style>
 </head>
 
@@ -108,6 +120,7 @@
             <a href="./PaginasMedico/">Agenda de Consultas</a>
             <a href="Prontuariotelamedico.html">Prontuário Eletrônico</a>
             <a href="#">Mensagens</a>
+            <input class="voltar-button" value="Sair" type="button" onclick="window.location.href='./Telainicial.html';">
       </div>
 
       <div class="main">

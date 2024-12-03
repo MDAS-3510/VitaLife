@@ -32,17 +32,19 @@
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                      <li class="nav-item">
-                        <a class="nav-link" style="color: white;" href="index.php?menuop=contatos">Contatos</a>
+                        <a class="nav-link" style="color: white;" href="index.php?menuop=contatos">Pacientes</a>
                      </li>
 
                      <li class="nav-item">
-                        <a class="nav-link" style="color: white;" href="index.php?menuop=tarefas">Tarefas</a>
+                        <a class="nav-link" style="color: white;" href="index.php?menuop=tarefas">Consultas</a>
                      </li>
 
                      <li class="nav-item">
                         <a class="nav-link" style="color: white;" href="index.php?menuop=eventos">Eventos</a>
                      </li>
-
+                     <li class="nav-item">
+                        <a class="nav-link" style="color: white;" href="../Telamedico.php">Voltar</a>
+                     </li>
                   </ul>
                </div>
             </div>
